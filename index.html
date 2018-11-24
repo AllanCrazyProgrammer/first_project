@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <div class="container">
+
+            <!DOCTYPE html>
+            <html lang="en">
+            
+            <head>
+                <meta charset="utf-8">
+                <title>Giphy API</title>
+            </head>
+            
+            <body>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script type="text/javascript">
+                // GET https://accounts.spotify.com/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fcallback&scope=user-read-private%20user-read-email&state=34fFs29kd09
+                    
+                var clientId = "01de9111d6d34d8aa6591b95f5b1c9b1";  
+                var redirectUri = "https://allancrazyprogrammer.github.io/first_project/";
+                var queryURL = "https://accounts.spotify.com/authorize?client_id=" + clientId + "&response_type=code&redirect_uri=" + redirectUri + "&scope=user-read-private%20user-read-email&state=34fFs29kd09" ;
+            
+                    $.ajax({
+                        url: queryURL,
+                        method: "POST"
+                    }).then(function (response) {
+                        console.log(response);
+                    });
+                </script>
+            
+            </body>
+            
+            </html>
+</div>
+
 </body>
+
 </html>
