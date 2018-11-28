@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/libs/fastselect/fastselect.min.css"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/libs/fastselect/fastselect.standalone.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="utf-8">
+            <title>Spotify Test</title>
+        </head>
+
+        <body>
+
+            <div class="spotify">
+                <select id="genre-select" multiple ></select>
+            </div>
+            
+            <script type="text/javascript">
+                // GET https://accounts.spotify.com/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=token&redirect_uri=https%3A%2F%2Fexample.com%2Fcallback&scope=user-read-private%20user-read-email&state=34fFs29kd09
+                //https://api.spotify.com/v1/recommendations/available-genre-seeds
+                var urlHash = window.location.hash;
+                if (!urlHash)
+                    location.href = "/";
+
+                var userAccessToken = urlHash.split("&")[0].split("=")[1];
+
+                var clientId = "01de9111d6d34d8aa6591b95f5b1c9b1";
+                var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+                var spotifySearchUrl = "https://api.spotify.com/v1/recommendations";
+                var spotifyGenre = "https://api.spotify.com/v1/recommendations/available-genre-seeds"
+                var queryURL = corsAnywhere + spotifySearchUrl;
+                var queryURLG = corsAnywhere + spotifyGenre;
+
+                /*$.ajax({
+                    url: queryURL,
+                    method: "GET",
+                    data: {
+                        access_token: userAccessToken,
+                        token_type: "Bearer",
+                        seed_genres: "classical",
+                        clientId: clientId
+                    },
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });*/
+
+                $.ajax({
+                    url: queryURLG,
+                    method: "GET",
+                    data: {
+                        access_token: userAccessToken,
+                        token_type: "Bearer",
+                        seed_genres: "",
+                        clientId: clientId
+                    },
+                    success: function (response) {
+                        response.genres.map((genre) => {
+                            var option = $("<option>");
+                            option.text(genre);
+                            option.attr("value", genre);
+                            $("#genre-select").append(option);
+                        });
+                        $('#genre-select').fastselect();
+                    }
+                });
+
+            </script>
+
+        </body>
+
+        </html>
+    </div>
+
+</body>
+
+</html>
