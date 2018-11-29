@@ -33,7 +33,7 @@
                 var redirectUri = "https://allancrazyprogrammer.github.io/first_project/";
               
                 $("#logIn").on("click", function () {  
-                    location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${window.location}app.html`;
+                    location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${window.location}app.html&scope=user-read-private%20user-read-email%20user-top-read`;
                 });
 
             </script>
