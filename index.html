@@ -5,44 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-widtth, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+        
+    <script src="maps.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <title>VMP</title>
 </head>
 
 <body>
     <div class="container">
-        <!DOCTYPE html>
-        <html lang="en">
 
-        <head>
-            <meta charset="utf-8">
-            <title>Log In to Spotify</title>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script type="text/javascript"></script>
-        </head>
+        <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location" autocomplete="off">
 
-        <body>
-            <div class="spotify"></div>
-            <!-- TODO
-                Add button for the user to log in
-                On click call the location.href for the spotify
-            -->
-            <button id="logIn">LOG IN BRO</button>
+        <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location"
+            autocomplete="off">
 
-            <script type="text/javascript">
-                var clientId = "01de9111d6d34d8aa6591b95f5b1c9b1";
-                var redirectUri = "https://allancrazyprogrammer.github.io/first_project/";
-              
-                $("#logIn").on("click", function () {  
-                    location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${window.location}app.html`;
-                });
+        <button id="calculate-time" class="btn">Calcular</button>
 
-            </script>
+        <h3 id="travel-time"></h3>
 
-        </body>
+        <iframe src="https://open.spotify.com/embed/playlist/73JTPH7JM3vltvADNfrI7N" width="600" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
-        </html>
     </div>
-
 </body>
-
+  
 </html>
