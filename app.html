@@ -25,9 +25,9 @@
 
         <body>
 
-            <div class="spotify">
+         <!--<div class="spotify">
                 <select id="genre-select" multiple></select>
-            </div>
+            </div>-->
 
             <script type="text/javascript">
                 var urlHash = window.location.hash;
@@ -45,21 +45,21 @@
                 var queryURLG = corsAnywhere + spotifyGenre;
                 var queryURLP = corsAnywhere + spotifyPlayList;
 
-                $.ajax({
-                    url: queryURLG,
+                /*$.ajax({
+                    url: queryURL,
                     method: "GET",
                     data: {
                         access_token: userAccessToken,
                         token_type: "Bearer",
-                        seed_genres: "classical",
+                        seed_genres: "country",
                         clientId: clientId
                     },
                     success: function (response) {
                         console.log(response);
                     }
-                });
+                });*/
 
-               /*$.ajax({
+               $.ajax({
                     url: queryURLG,
                     method: "GET",
                     data: {
@@ -77,7 +77,7 @@
                         });
                         $('#genre-select').fastselect();
                     }
-                });*/
+                });
 
             </script>
 

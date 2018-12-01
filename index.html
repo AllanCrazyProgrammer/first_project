@@ -31,9 +31,10 @@
             <script type="text/javascript">
                 var clientId = "01de9111d6d34d8aa6591b95f5b1c9b1";
                 var redirectUri = "https://allancrazyprogrammer.github.io/first_project/";
-              
+                var scopes = 'user-read-private user-read-email playlist-modify-public playlist-modify-private';
+
                 $("#logIn").on("click", function () {  
-                    location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${window.location}app.html&scope=user-read-private%20user-read-email%20user-top-read`;
+                    location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${window.location}app.html` + '&scope=' + encodeURIComponent(scopes) ;
                 });
 
             </script>

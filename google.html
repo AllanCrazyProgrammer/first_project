@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-widtth, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    
+    <title>VMP</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- <input id="origin-input" class="controls" type="text" placeholder="Enter an origin location" autocomplete="off">-->
+
+        <input id="destination-input" class="controls" type="text" placeholder="Enter a destination location"
+            autocomplete="off">
+
+        <button id="calculate-time" class="btn">Calcular</button>
+
+        <h3 id="travel-time"></h3>
+
+        <iframe src="https://open.spotify.com/embed/playlist/73JTPH7JM3vltvADNfrI7N" width="600" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+    </div>
+    <script>
+        $(document).ready(function () {
+
+$("#calculate-time").on("click", function () {
+
+var x = document.getElementById("demo");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+  /*  x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude; */
+    //var originInput = $("#destination-input").val();
+    var origin = position.coords.latitude + "," + position.coords.longitude;
+    var destinationInput = $("#destination-input").val();
+
+    console.log(origin);
+    console.log(destinationInput);
+    //var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + origin + "&destinations=" + destinationInput + "&departure_time=now&key=AIzaSyBxR_xcjNZab-IUvUTGn6vYdm9QR6d_ANE&traffic_model =best_guess"
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + origin + "&destinations=" + destinationInput + "&key=AIzaSyBxR_xcjNZab-IUvUTGn6vYdm9QR6d_ANE";
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
+        console.log(response);
+        var timeToArrive = response.rows[0].elements[0].duration.text;
+        var timeValue = response.rows[0].elements[0].duration;
+        console.log(timeValue);
+        $("#travel-time").text("Faltan " + timeToArrive);
+    });
+}
+
+   
+getLocation();
+   
+
+})
+
+});
+    </script>
+</body>
+  
+</html>
